@@ -30,7 +30,7 @@ public class main {
 
         for (int i = 0; i < List.size(); i++){
             song now = List.get(i);
-            System.out.println(now.getName() +" rating: " + now.getRating() + " artist: " + now.getArtist());
+            System.out.println(" song name: " + now.getName() +" rating: " + now.getRating() + " artist: " + now.getArtist());
         }
 
     }
