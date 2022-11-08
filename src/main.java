@@ -4,7 +4,7 @@ public class main {
         double rate = 10;
         String city = "chicago";
         String album = "graduation";
-        String song = "Cant tell me nothing";
+        String song = "homecoming";
         double cover = 10;
 
 
