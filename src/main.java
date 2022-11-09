@@ -4,20 +4,26 @@ import java.lang.Math;
 import java.util.*;
 
 public class main {
+
+    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
+    static ArrayList<song> rank = new ArrayList();
+    static ArrayList<song> fav = new ArrayList();
+    ArrayList<Double> sums = new ArrayList();
+
+    static boolean ask = true;
+    static boolean quit = false;
+
+    int count = 0;
+
+    double counter = 0;
+    double highest = 0;
+    double sum = 0;
+    double average = 0;
+        
+    String favArtist = "";
+
     public static void main(String[] args) throws IOException{
-        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
-        BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
-        ArrayList<song> rank = new ArrayList();
-        ArrayList<song> fav = new ArrayList();
-        ArrayList<Double> sums = new ArrayList();
-        boolean ask = true;
-        boolean quit = false;
-        int count = 0;
-        double counter = 0;
-        double highest = 0;
-        double sum = 0;
-        double average = 0;
-        String favArtist = "";
 
         while (quit == false){
         System.out.println("");
@@ -55,6 +61,7 @@ public class main {
         if (start == 2){
             counter = 0;
             sum = 0;
+            System.out.println("");
             for (int i = 0; i < fav.size(); i++){
                 song now = fav.get(i);
                 for (int x = 0; x < fav.size(); x++){
@@ -73,12 +80,11 @@ public class main {
                 sum = 0;
             }
             System.out.println("your highest rated artist is " + favArtist + " with an average rating of " + highest);
+            
             start = 0;
         }
         
         if (start == 4){
-            System.out.println("");
-            System.out.println("");
             System.out.println("");
             System.out.println("Songs ranked from highest to lowest ");
             for (int i = 100; i >= 0; i--){
@@ -87,16 +93,22 @@ public class main {
                     if (now.getRating()*10 == i){
                         count++;
 
-                        System.out.println(count + ". " + now.getName() + ", " + now.getArtist()+ ", " + now.getRating()); 
+                        System.out.println(count + ". " + now.getName() + ", by- " + now.getArtist()+ ", " + now.getRating()); 
                     }
                 }
             }
-            System.out.println("");
-            System.out.println("");
-            start = 0;
+            
+
         }
 
         }
+
+    }
+
+    public void NAV(){
+        System.out.println("press ENTER to return to NAV");
+        String next = Input.readLine();
+            start = 0;
 
     }
 }
