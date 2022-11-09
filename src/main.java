@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.io.*;
 import java.lang.Math;
+import java.util.*;
 
 public class main {
     public static void main(String[] args) throws IOException{
@@ -8,13 +9,18 @@ public class main {
         BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<song> rank = new ArrayList();
         ArrayList<song> fav = new ArrayList();
+        ArrayList<Double> sums = new ArrayList();
         boolean ask = true;
         boolean quit = false;
         int count = 0;
-        int counter = 0;
+        double counter = 0;
+        double highest = 0;
+        double sum = 0;
+        double average = 0;
+        String favArtist = "";
 
         while (quit == false){
-        System.out.print("");
+        System.out.println("");
         System.out.println("Press 0 to quit");
         System.out.println("Press keys 1-4 to navigate");
         System.out.println("Rate Songs   (1) ");
@@ -38,7 +44,7 @@ public class main {
             String artist = input.readLine();
             System.out.print("enter rating: ");
             double rate = Double.parseDouble(key.readLine());
-            System.out.print("");
+            System.out.println("");
 
             song s = new song(song, rate, artist);
             rank.add(s);
@@ -48,17 +54,27 @@ public class main {
 
         if (start == 2){
             counter = 0;
+            sum = 0;
             for (int i = 0; i < fav.size(); i++){
                 song now = fav.get(i);
                 for (int x = 0; x < fav.size(); x++){
                     song look = fav.get(x);
                     if((now.getArtist()).equals(look.getArtist())){
                         counter++;
+                        sum += look.getRating();
                     }
                 }
+                System.out.println(sum);
+                System.out.println(counter);
+                average = sum/counter;
+                if (average > highest){
+                    highest = average;
+                    favArtist = now.getArtist();
+                }
+                counter = 0;
+                sum = 0;
             }
-            counter = counter - fav.size();
-            System.out.println(counter);
+            System.out.println("your highest rated artist is " + favArtist + " with an average rating of " + highest);
             start = 0;
         }
         
@@ -72,7 +88,8 @@ public class main {
                     song now = rank.get(t);
                     if (now.getRating()*10 == i){
                         count++;
-                        System.out.println(count + ". " + now.getName() + " artist: " + now.getArtist()+" rating: " + now.getRating()); 
+
+                        System.out.println(count + ". " + now.getName() + ", " + now.getArtist()+ ", " + now.getRating()); 
                     }
                 }
             }
