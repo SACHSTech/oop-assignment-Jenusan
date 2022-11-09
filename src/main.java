@@ -25,40 +25,59 @@ public class main {
     static String favArtist = "";
 
     public static void main(String[] args) throws IOException{
-
         while (quit == false){
+            NAV();
+            songInputs();
+            stats();
+        }
+    }
+
+    public static void backToNAV() throws IOException{
+        System.out.println("");
+        System.out.println("press any key to return to NAV");
+        String next = input.readLine();
+
+        if (next == ""){
+            start = 0;
+        }else{
+            start = 0;
+        }
+    }
+
+    public static void NAV()throws IOException{
         System.out.println("");
         System.out.println("Press 0 to quit");
         System.out.println("Press keys 1-4 to navigate");
         System.out.println("Rate Songs    |(1) ");
         System.out.println("Stats         |(4) ");
-        System.out.println("Beta testing  |(5) ");
         start = Integer.parseInt(key.readLine());
         if (start == 0){
             quit = true;
         }
-
+    }
+    public static void songInputs()throws IOException{
         if (start == 1){
-        while (ask){
-            System.out.println("");
-            System.out.println("input (0) to quit");
-            System.out.print("enter song name: ");
-            String song = input.readLine();
-            if (song.equals("0")){
-                start = 0;
-                break;
+            while (ask){
+                System.out.println("");
+                System.out.println("input (0) to quit");
+                System.out.print("enter song name: ");
+                String song = input.readLine();
+                if (song.equals("0")){
+                    start = 0;
+                    break;
+                }
+                System.out.print("enter artist name: ");
+                String artist = input.readLine();
+                System.out.print("enter rating: ");
+                double rate = Double.parseDouble(key.readLine());
+    
+                song s = new song(song, rate, artist);
+                rank.add(s);
+                fav.add(s);
             }
-            System.out.print("enter artist name: ");
-            String artist = input.readLine();
-            System.out.print("enter rating: ");
-            double rate = Double.parseDouble(key.readLine());
-
-            song s = new song(song, rate, artist);
-            rank.add(s);
-            fav.add(s);
-        }
-        }
-        
+            }
+    }
+    public static void stats()throws IOException{
         if (start == 4){
             System.out.println("");
             System.out.println("Songs ranked from highest to lowest ");
@@ -94,21 +113,6 @@ public class main {
             }
             System.out.println("your highest rated artist is " + favArtist + " with an average rating of " + highest);
             backToNAV();
-        }
-
-        }
-
-    }
-
-    public static void backToNAV() throws IOException{
-        System.out.println("");
-        System.out.println("press any key to return to NAV");
-        String next = input.readLine();
-
-        if (next == ""){
-            start = 0;
-        }else{
-            start = 0;
         }
     }
 }
