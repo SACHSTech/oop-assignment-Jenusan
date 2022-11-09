@@ -30,9 +30,9 @@ public class main {
         System.out.println("");
         System.out.println("Press 0 to quit");
         System.out.println("Press keys 1-4 to navigate");
-        System.out.println("Rate Songs   (1) ");
-        System.out.println("Beta testing (2) ");
-        System.out.println("Stats        (4) ");
+        System.out.println("Rate Songs    |(1) ");
+        System.out.println("Stats         |(4) ");
+        System.out.println("Beta testing  |(5) ");
         start = Integer.parseInt(key.readLine());
         if (start == 0){
             quit = true;
