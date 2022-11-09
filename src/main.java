@@ -33,6 +33,7 @@ public class main {
 
         if (start == 1){
         while (ask){
+            System.out.println("");
             System.out.println("input (0) to quit");
             System.out.print("enter song name: ");
             String song = input.readLine();
@@ -44,7 +45,6 @@ public class main {
             String artist = input.readLine();
             System.out.print("enter rating: ");
             double rate = Double.parseDouble(key.readLine());
-            System.out.println("");
 
             song s = new song(song, rate, artist);
             rank.add(s);
@@ -64,8 +64,6 @@ public class main {
                         sum += look.getRating();
                     }
                 }
-                System.out.println(sum);
-                System.out.println(counter);
                 average = sum/counter;
                 if (average > highest){
                     highest = average;
