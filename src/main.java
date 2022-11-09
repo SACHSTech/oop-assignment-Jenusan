@@ -6,9 +6,8 @@ public class main {
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
         ArrayList<song> List = new ArrayList();
-
-        double x = 1;
         boolean ask = true;
+
 
         while (ask){
             System.out.println("enter song name: ");
@@ -22,14 +21,7 @@ public class main {
             String artist = input.readLine();
 
             song s = new song(song, rate, artist);
-
             List.add(s);
-        }
-
-        for (int i = 0; i < List.size(); i++){
-
-            song now = List.get(i);
-            System.out.println(" song name: " + now.getName() +" rating: " + now.getRating() + " artist: " + now.getArtist());
         }
 
         System.out.println("");
