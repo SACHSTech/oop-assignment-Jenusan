@@ -5,23 +5,24 @@ import java.util.*;
 
 public class main {
 
-    BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
     static ArrayList<song> rank = new ArrayList();
     static ArrayList<song> fav = new ArrayList();
-    ArrayList<Double> sums = new ArrayList();
+    static ArrayList<Double> sums = new ArrayList();
 
     static boolean ask = true;
     static boolean quit = false;
 
-    int count = 0;
+    static int count = 0;
+    static int start;
 
-    double counter = 0;
-    double highest = 0;
-    double sum = 0;
-    double average = 0;
+    static double counter = 0;
+    static double highest = 0;
+    static double sum = 0;
+    static double average = 0;
         
-    String favArtist = "";
+    static String favArtist = "";
 
     public static void main(String[] args) throws IOException{
 
@@ -32,7 +33,7 @@ public class main {
         System.out.println("Rate Songs   (1) ");
         System.out.println("Beta testing (2) ");
         System.out.println("Stats        (4) ");
-        int start = Integer.parseInt(key.readLine());
+        start = Integer.parseInt(key.readLine());
         if (start == 0){
             quit = true;
         }
@@ -57,8 +58,20 @@ public class main {
             fav.add(s);
         }
         }
+        
+        if (start == 4){
+            System.out.println("");
+            System.out.println("Songs ranked from highest to lowest ");
+            for (int i = 100; i >= 0; i--){
+                for (int t = 0; t < rank.size(); t++){
+                    song now = rank.get(t);
+                    if (now.getRating()*10 == i){
+                        count++;
 
-        if (start == 2){
+                        System.out.println(count + ". " + now.getName() + ", by: " + now.getArtist()+ ", " + now.getRating()); 
+                    }
+                }
+            }
             counter = 0;
             sum = 0;
             System.out.println("");
@@ -80,35 +93,22 @@ public class main {
                 sum = 0;
             }
             System.out.println("your highest rated artist is " + favArtist + " with an average rating of " + highest);
-            
-            start = 0;
-        }
-        
-        if (start == 4){
-            System.out.println("");
-            System.out.println("Songs ranked from highest to lowest ");
-            for (int i = 100; i >= 0; i--){
-                for (int t = 0; t < rank.size(); t++){
-                    song now = rank.get(t);
-                    if (now.getRating()*10 == i){
-                        count++;
-
-                        System.out.println(count + ". " + now.getName() + ", by- " + now.getArtist()+ ", " + now.getRating()); 
-                    }
-                }
-            }
-            
-
+            backToNAV();
         }
 
         }
 
     }
 
-    public void NAV(){
-        System.out.println("press ENTER to return to NAV");
-        String next = Input.readLine();
-            start = 0;
+    public static void backToNAV() throws IOException{
+        System.out.println("");
+        System.out.println("press any key to return to NAV");
+        String next = input.readLine();
 
+        if (next == ""){
+            start = 0;
+        }else{
+            start = 0;
+        }
     }
 }
