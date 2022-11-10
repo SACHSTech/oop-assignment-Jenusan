@@ -13,6 +13,7 @@ public class main {
     static ArrayList<Double> sums = new ArrayList();
 
     public static album now;
+    public static rankList songRanks;
 
     static boolean ask = true;
     static boolean quit = false;
@@ -30,6 +31,7 @@ public class main {
         
     static String favArtist = "";
     public static void main(String[] args) throws IOException{
+        songRanks = new rankList();
         while (quit == false){
             NAV();
             songInputs();
@@ -81,7 +83,7 @@ public class main {
                 song s = new song(song, rate, artist);
                 rank.add(s);
                 fav.add(s);
-                rankList songRank = new rankList();
+                songRanks.addSong(s);
             }
             }
     }
@@ -128,39 +130,8 @@ public class main {
 
     public static void stats()throws IOException{
         if (start == 4){
-            System.out.println("");
-            System.out.println("Songs ranked from highest to lowest ");
-            for (int i = 100; i >= 0; i--){
-                for (int t = 0; t < rank.size(); t++){
-                    song now = rank.get(t);
-                    if (now.getRating()*10 == i){
-                        count++;
-
-                        System.out.println(count + ". " + now.getName() + ", by: " + now.getArtist()+ ", " + now.getRating()); 
-                    }
-                }
-            }
-            counter = 0;
-            sum = 0;
-            System.out.println("");
-            for (int i = 0; i < fav.size(); i++){
-                song now = fav.get(i);
-                for (int x = 0; x < fav.size(); x++){
-                    song look = fav.get(x);
-                    if((now.getArtist()).equals(look.getArtist())){
-                        counter++;
-                        sum += look.getRating();
-                    }
-                }
-                average = sum/counter;
-                if (average > highest){
-                    highest = average;
-                    favArtist = now.getArtist();
-                }
-                counter = 0;
-                sum = 0;
-            }
-            System.out.println("your highest rated artist is " + favArtist + " with an average rating of " + highest);
+            songRanks.ranketh();
+            songRanks.fav();
             backToNAV();
         }
     }
