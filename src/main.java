@@ -1,7 +1,5 @@
 import java.util.ArrayList;
 import java.io.*;
-import java.lang.Math;
-import java.util.*;
 
 public class main {
 
@@ -19,17 +17,9 @@ public class main {
     static boolean quit = false;
     static boolean albumFiller = true;
 
-    static int count = 0;
     static int start;
-    static int albumcount = 0;
 
-    static double counter = 0;
-    static double highest = 0;
-    static double sum = 0;
-    static double average = 0;
-    static double rate = 0;
-        
-    static String favArtist = "";
+
     public static void main(String[] args) throws IOException{
         songRanks = new rankList();
         while (quit == false){
@@ -102,11 +92,11 @@ public class main {
                 String artist = input.readLine();
 
                 while (albumFiller){
+                    System.out.print("");
                 System.out.println("input (0) to quit");
                 System.out.print("enter song name: ");
                 String name = input.readLine();
                 if (name.equals("0")){
-                    albumcount++;
                     now = new album(album, artist, songList);
                     System.out.println(now.getName());
                     System.out.println(now.getArtist());
