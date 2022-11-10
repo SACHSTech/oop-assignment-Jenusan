@@ -74,6 +74,8 @@ public class main {
                 song s = new song(song, rate, artist);
                 rank.add(s);
                 fav.add(s);
+                rankList songRank = new rankList();
+                songRank.addSong();
             }
             }
     }
