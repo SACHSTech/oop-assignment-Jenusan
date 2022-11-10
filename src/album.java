@@ -1,21 +1,36 @@
-public class album extends rating{
-    private double rating;
-    private String name;
-    private song song;
-    private double albumCover;
+import java.util.ArrayList;
 
-    public album(String name, double rating, song song, double albumCover){
-        super(rating);
-        this.song = song;
-        this.rating = rating;
+public class album{
+    private String name;
+    private String artist;
+    private ArrayList<song> songList;
+
+    public int songCount = 0;
+    public int ratingCount = 0;
+
+    public album(String name, String artist, ArrayList<song> songList){
         this.name = name;
-        this.albumCover = albumCover;
+        this.artist = artist;
+        this.songList = songList;
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getArtist(){
+        return this.artist;
+    }
+
+    public String getSong(){
+        song now = songList.get(songCount);
+        songCount++;
+        return now.getName();
     }
 
     public double getRating(){
-        return this.rating;
-    }
-    public String getName(){
-        return this.name;
+        song now = songList.get(ratingCount);
+        ratingCount++;
+        return now.getRating();
     }
 }

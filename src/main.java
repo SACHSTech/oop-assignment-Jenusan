@@ -9,25 +9,31 @@ public class main {
     static BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
     static ArrayList<song> rank = new ArrayList();
     static ArrayList<song> fav = new ArrayList();
+    static ArrayList<song> songList = new ArrayList();
     static ArrayList<Double> sums = new ArrayList();
+
+    public static album now;
 
     static boolean ask = true;
     static boolean quit = false;
+    static boolean albumFiller = true;
 
     static int count = 0;
     static int start;
+    static int albumcount = 0;
 
     static double counter = 0;
     static double highest = 0;
     static double sum = 0;
     static double average = 0;
+    static double rate = 0;
         
     static String favArtist = "";
-
     public static void main(String[] args) throws IOException{
         while (quit == false){
             NAV();
             songInputs();
+            albumInputs();
             stats();
         }
     }
@@ -49,6 +55,7 @@ public class main {
         System.out.println("Press 0 to quit");
         System.out.println("Press keys 1-4 to navigate");
         System.out.println("Rate Songs    |(1) ");
+        System.out.println("Rate Albums   |(2) ");
         System.out.println("Stats         |(4) ");
         start = Integer.parseInt(key.readLine());
         if (start == 0){
@@ -75,10 +82,50 @@ public class main {
                 rank.add(s);
                 fav.add(s);
                 rankList songRank = new rankList();
-                songRank.addSong();
             }
             }
     }
+
+    public static void albumInputs()throws IOException{
+        if (start == 2){
+            while (ask){
+                System.out.println("");
+                System.out.println("input (0) to quit");
+                System.out.print("enter album name: ");
+                String album = input.readLine();
+                if (album.equals("0")){
+                    break;
+                }
+                System.out.print("enter artist name: ");
+                String artist = input.readLine();
+
+                while (albumFiller){
+                System.out.println("input (0) to quit");
+                System.out.print("enter song name: ");
+                String name = input.readLine();
+                if (name.equals("0")){
+                    albumcount++;
+                    now = new album(album, artist, songList);
+                    System.out.println(now.getName());
+                    System.out.println(now.getArtist());
+                    System.out.println(now.getSong());
+                    System.out.println(now.getRating());
+                    
+                    break;
+                }
+                System.out.print("enter rating: ");
+                double rate = Double.parseDouble(key.readLine());
+
+                song songs = new song(name, rate, artist);
+                songList.add(songs);
+                }
+
+            }
+            }
+    }
+
+
+
     public static void stats()throws IOException{
         if (start == 4){
             System.out.println("");
