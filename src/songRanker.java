@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 
-import javax.swing.GroupLayout.Alignment;
-
-public class rankList {
+public class songRanker extends ranker{
 
     int start;
     int count;
@@ -15,12 +13,7 @@ public class rankList {
     public double highest;
     public double average;
 
-    public rankList(){
-        songRank = new ArrayList<song>();
-        albumRank = new ArrayList<album>();
-    }
-
-    public void addSong(song song){
+    public void addeth(song song){
         songRank.add(song);
     }
 
@@ -61,6 +54,8 @@ public class rankList {
             }
             System.out.println("your highest rated artist is " + favArtist + " with an average rating of " + highest);
     }
+
+
 
 
 }

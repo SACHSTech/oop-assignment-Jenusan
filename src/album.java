@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class album{
+public class album extends rating{
     private String name;
     private String artist;
     private ArrayList<song> songList;
@@ -9,6 +9,7 @@ public class album{
     public int ratingCount = 0;
 
     public album(String name, String artist, ArrayList<song> songList){
+        super(rating);
         this.name = name;
         this.artist = artist;
         this.songList = songList;
