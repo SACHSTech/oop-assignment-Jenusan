@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class songRanker extends ranker{
+public class songRanker{
 
     int start;
     int count;
@@ -12,6 +12,10 @@ public class songRanker extends ranker{
     public static String favArtist;
     public double highest;
     public double average;
+
+    public songRanker(){
+        songRank = new ArrayList<song>();
+    }
 
     public void addeth(song song){
         songRank.add(song);

@@ -1,9 +1,6 @@
 public abstract class rating {
-
-    public int songsRated = 0;
-    private int artistsRated = 0;
-    private int albumsRated = 0;
-    private double rating;
+    
+    protected static double rating;
 
     public rating(double rating){
         this.rating = rating;

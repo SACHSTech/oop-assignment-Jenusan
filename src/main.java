@@ -5,13 +5,14 @@ public class main {
 
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
-    static ArrayList<song> rank = new ArrayList();
-    static ArrayList<song> fav = new ArrayList();
-    static ArrayList<song> songList = new ArrayList();
-    static ArrayList<Double> sums = new ArrayList();
+    static ArrayList<song> rank = new ArrayList<song>();
+    static ArrayList<song> fav = new ArrayList<song>();
+    public static ArrayList<song> songList = new ArrayList<song>();
+    static ArrayList<Double> sums = new ArrayList<Double>();
 
     public static album now;
-    public static rankList songRanks;
+    public static songRanker songRanks;
+    public static albumRanker albumStats;
 
     static boolean ask = true;
     static boolean quit = false;
@@ -21,11 +22,13 @@ public class main {
 
 
     public static void main(String[] args) throws IOException{
-        songRanks = new rankList();
+        songRanks = new songRanker();
+        albumStats = new albumRanker();
         while (quit == false){
             NAV();
             songInputs();
             albumInputs();
+            albumStats();
             stats();
         }
     }
@@ -48,7 +51,8 @@ public class main {
         System.out.println("Press keys 1-4 to navigate");
         System.out.println("Rate Songs    |(1) ");
         System.out.println("Rate Albums   |(2) ");
-        System.out.println("Stats         |(4) ");
+        System.out.println("Song stats    |(3) ");
+        System.out.println("Album stats   |(4) ");
         start = Integer.parseInt(key.readLine());
         if (start == 0){
             quit = true;
@@ -73,7 +77,7 @@ public class main {
                 song s = new song(song, rate, artist);
                 rank.add(s);
                 fav.add(s);
-                songRanks.addSong(s);
+                songRanks.addeth(s);
             }
             }
     }
@@ -92,17 +96,15 @@ public class main {
                 String artist = input.readLine();
 
                 while (albumFiller){
-                    System.out.print("");
+                System.out.println("");
                 System.out.println("input (0) to quit");
                 System.out.print("enter song name: ");
                 String name = input.readLine();
                 if (name.equals("0")){
                     now = new album(album, artist, songList);
-                    System.out.println(now.getName());
-                    System.out.println(now.getArtist());
-                    System.out.println(now.getSong());
-                    System.out.println(now.getRating());
-                    
+                    albumStats.addAlbum(now);
+                    albumStats.addSet(songList);
+                    albumStats.wipe();
                     break;
                 }
                 System.out.print("enter rating: ");
@@ -110,6 +112,8 @@ public class main {
 
                 song songs = new song(name, rate, artist);
                 songList.add(songs);
+                albumStats.addSong(songs);
+                albumStats.count();
                 }
 
             }
@@ -119,10 +123,16 @@ public class main {
 
 
     public static void stats()throws IOException{
-        if (start == 4){
+        if (start == 3){
             songRanks.ranketh();
             songRanks.fav();
             backToNAV();
+        }
+    }
+
+    public static void albumStats()throws IOException{
+        if (start ==4){
+            albumStats.albumInfo();
         }
     }
 }
