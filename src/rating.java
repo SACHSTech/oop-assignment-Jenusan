@@ -6,6 +6,5 @@ public abstract class rating {
         this.rating = rating;
     }
 
-    public abstract double getRating();
     public abstract String getName();
 }

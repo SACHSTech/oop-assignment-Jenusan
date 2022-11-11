@@ -17,34 +17,15 @@ public class albumRanker {
         albumRank.add(album);
     }
 
-    public void addSong(song song){
-        SongsInAlbum.add(song);
-    }
-
-    public void count(){
-        count++;
-    }
-
-    public void addSet(ArrayList list){
-        songsPerAlbum.add(list);
-    }
-
-    public void wipe(){
-        SongsInAlbum.removeAll(SongsInAlbum);
-    }
-
     public void albumInfo(){
         for (int i = 0; i < albumRank.size(); i++){
-        album nowAlbum = albumRank.get(i);
-        ArrayList<song> nowlist = songsPerAlbum.get(i);
-        System.out.println(nowAlbum.getName() + " by: " + nowAlbum.getArtist());
-        for(int x = 0; x < count; x++){
-            song nowSong = nowlist.get(x);
-            System.out.println(nowSong.getName() + " " + nowSong.getRating());
+            album now = albumRank.get(i);
+            System.out.println(now.getName() + " by: " + now.getArtist());
+            System.out.println(now.getNumberSongs());
+            for (int x = 0; x < now.getNumberSongs(); x++){
+                System.out.println(now.getSong(x));
+                System.out.println(now.getRating(x));
+            }
         }
-    }
-    }
-
-
-    
+}
 }

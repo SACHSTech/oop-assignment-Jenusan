@@ -19,6 +19,7 @@ public class main {
     static boolean albumFiller = true;
 
     static int start;
+    static int songCounter;
 
 
     public static void main(String[] args) throws IOException{
@@ -101,10 +102,9 @@ public class main {
                 System.out.print("enter song name: ");
                 String name = input.readLine();
                 if (name.equals("0")){
-                    now = new album(album, artist, songList);
+                    now = new album(album, artist, songList, songCounter);
                     albumStats.addAlbum(now);
-                    albumStats.addSet(songList);
-                    albumStats.wipe();
+                    songCounter = 0;
                     break;
                 }
                 System.out.print("enter rating: ");
@@ -112,8 +112,7 @@ public class main {
 
                 song songs = new song(name, rate, artist);
                 songList.add(songs);
-                albumStats.addSong(songs);
-                albumStats.count();
+                songCounter++;
                 }
 
                 
