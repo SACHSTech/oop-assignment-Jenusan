@@ -120,8 +120,6 @@ public class main {
             }
     }
 
-
-
     public static void stats()throws IOException{
         if (start == 3){
             songRanks.ranketh();
