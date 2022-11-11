@@ -35,7 +35,7 @@ public class album extends rating{
     }
 
     public double getRating(int i){
-        song now = this.songList.get(i);
+        song now = songList.get(i);
         return now.getRating();
     }
 }

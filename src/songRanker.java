@@ -33,8 +33,6 @@ public class songRanker{
                     }
                 }
             }
-            counter = 0;
-            sum = 0;
     }
 
     public void fav(){
