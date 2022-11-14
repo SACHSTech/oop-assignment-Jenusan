@@ -103,9 +103,8 @@ public class main {
                 System.out.print("enter song name: ");
                 String name = input.readLine();
                 if (name.equals("0")){
-                    now = new album(album, artist, songList, songCounter);
+                    now = new album(album, artist, songList);
                     albumStats.addAlbum(now);
-                    songCounter = 0;
                     //songList.removeAll(songList);
                     break;
                 }
@@ -114,7 +113,6 @@ public class main {
 
                 song songs = new song(name, rate, artist);
                 songList.add(songs);
-                songCounter++;
                 }
                 
             }
