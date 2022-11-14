@@ -7,7 +7,7 @@ public class main {
     static BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
     static ArrayList<song> rank = new ArrayList<song>();
     static ArrayList<song> fav = new ArrayList<song>();
-    public static ArrayList<song> songList = new ArrayList<song>();
+    public static ArrayList<ArrayList<song>> List = new ArrayList<ArrayList<song>>();
     static ArrayList<Double> sums = new ArrayList<Double>();
 
     public static album now;
@@ -19,7 +19,7 @@ public class main {
     static boolean albumFiller = true;
 
     static int start;
-    static int songCounter;
+    public static int songCounter;
 
 
     public static void main(String[] args) throws IOException{
@@ -86,6 +86,7 @@ public class main {
     public static void albumInputs()throws IOException{
         if (start == 2){
             while (ask){
+                ArrayList<song> songList = new ArrayList<song>();
                 System.out.println("");
                 System.out.println("input (0) to quit");
                 System.out.print("enter album name: ");
@@ -105,6 +106,7 @@ public class main {
                     now = new album(album, artist, songList, songCounter);
                     albumStats.addAlbum(now);
                     songCounter = 0;
+                    //songList.removeAll(songList);
                     break;
                 }
                 System.out.print("enter rating: ");

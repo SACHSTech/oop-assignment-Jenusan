@@ -11,7 +11,7 @@ public class song extends rating {
         this.name = name;
     }
 
-    public double getRating(){
+    public double getSongRating(){
         return this.rating;
     }
 

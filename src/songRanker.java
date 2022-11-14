@@ -27,9 +27,9 @@ public class songRanker{
             for (int i = 100; i >= 0; i--){
                 for (int t = 0; t < songRank.size(); t++){
                     song now = songRank.get(t);
-                    if (now.getRating()*10 == i){
+                    if (now.getSongRating()*10 == i){
                         count++;
-                        System.out.println(count + ". " + now.getName() + ", by: " + now.getArtist()+ ", " + now.getRating()); 
+                        System.out.println(count + ". " + now.getName() + ", by: " + now.getArtist()+ ", " + now.getSongRating()); 
                     }
                 }
             }
@@ -43,7 +43,7 @@ public class songRanker{
                     song look = songRank.get(x);
                     if((now.getArtist()).equals(look.getArtist())){
                         counter++;
-                        sum += look.getRating();
+                        sum += look.getSongRating();
                     }
                 }
                 average = sum/counter;

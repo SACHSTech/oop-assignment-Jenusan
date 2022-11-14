@@ -1,24 +1,27 @@
 import java.util.ArrayList;
 
 public class album extends rating{
-    private String name;
-    private String artist;
-    private ArrayList<song> songList;
-    private int songNums;
+    public String name;
+    public String artist;
+    public ArrayList<song> theSongList;
+    public int songNums;
 
-    public int songCount = 0;
-    public int ratingCount = 0;
+    public song songNow;
 
     public album(String name, String artist, ArrayList<song> songList, int songNums){
         super(rating);
         this.name = name;
         this.artist = artist;
-        this.songList = songList;
+        theSongList = songList;
         this.songNums = songNums;
     }
 
     public String getName(){
         return this.name;
+    }
+
+    public song getTheSong(int i){
+        return (theSongList).get(i);
     }
 
     public int getNumberSongs(){
@@ -29,13 +32,18 @@ public class album extends rating{
         return this.artist;
     }
 
+    public int getSize(){
+        return (theSongList).size();
+    }
+
     public String getSong(int i){
-        song now = songList.get(i);
-        return now.getName();
+        songNow = theSongList.get(i);
+        return songNow.getName();
+        
     }
 
     public double getRating(int i){
-        song now = songList.get(i);
-        return now.getRating();
+        songNow = theSongList.get(i);
+        return songNow.getSongRating();
     }
 }
