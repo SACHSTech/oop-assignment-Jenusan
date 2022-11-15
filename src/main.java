@@ -54,12 +54,23 @@ public class main {
         System.out.println("Rate Albums   |(2) ");
         System.out.println("Song stats    |(3) ");
         System.out.println("Album stats   |(4) ");
+        try {
         start = Integer.parseInt(key.readLine());
         if (start == 0){
             quit = true;
         }
+        if (start < 0 || start > 4){
+            System.out.println("");
+            System.out.println("Enter a viable option pal..");
+            System.out.println("");
+        }
+        } catch (Exception e){
+            System.out.println("");
+            System.out.println("Enter a viable option pal..");
+            System.out.println("");
+        }
     }
-    
+
     public static void songInputs()throws IOException{
         if (start == 1){
             while (ask){
@@ -67,19 +78,47 @@ public class main {
                 System.out.println("input (0) to quit");
                 System.out.print("enter song name: ");
                 String song = input.readLine();
+                if (song.equals("")){
+                    while(song.equals("")){
+                    System.out.println("");
+                    System.out.println("Not a real song name bud...");
+                    System.out.println("");
+                    System.out.print("enter song name: ");
+                    song = input.readLine();
+                    }
+                }
                 if (song.equals("0")){
                     start = 0;
                     break;
                 }
                 System.out.print("enter artist name: ");
                 String artist = input.readLine();
-                System.out.print("enter rating: ");
+                if (artist.equals("")){
+                    while(artist.equals("")){
+                    System.out.println("");
+                    System.out.println("Not a real artist name bud...");
+                    System.out.println("");
+                    System.out.print("enter artist name: ");
+                    artist = input.readLine();
+                    }
+                }
+                System.out.print("enter rating from 1-10: ");
                 double rate = Double.parseDouble(key.readLine());
-    
-                song s = new song(song, rate, artist);
-                rank.add(s);
-                fav.add(s);
-                songRanks.addeth(s);
+                if (rate < 0 || rate > 10){
+                    while(rate < 0 || rate > 10){
+                    System.out.println("");
+                    System.out.println("From 1-10...");
+                    System.out.println("");
+                    System.out.print("enter rating from 1-10: ");
+                    rate = Double.parseDouble(key.readLine());
+                    }
+                }
+
+            song s = new song(song, rate, artist);
+            rank.add(s);
+            fav.add(s);
+            songRanks.addeth(s);
+
             }
             }
     }
