@@ -4,10 +4,10 @@ public class song extends rating {
     public String name;
     public String artist;
 
-    public song(String name, double rating, String song){
+    public song(String name, double rating, String artist){
         super(rating);
         this.rating = rating;
-        this.artist = song;
+        this.artist = artist;
         this.name = name;
     }
 

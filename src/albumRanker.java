@@ -18,11 +18,15 @@ public class albumRanker {
         albumRank.add(album);
     }
 
+    public int getLength(){
+        return albumRank.size();
+    }
+
     public void albumInfo(){
         for (int i = 0; i < albumRank.size(); i++){
             album now = albumRank.get(i);
             System.out.println("");
-            System.out.print(now.getName() + " by: " + now.getArtist());
+            System.out.print(now.getName() + " by: " + now.getArtist(i));
 
             for (int w = 0; w < now.getSize(); w++){
                 song songNow = now.getTheSong(w);
@@ -52,7 +56,7 @@ public class albumRanker {
 
     public void favAlbum(){
         System.out.println("");
-        System.out.println("Favorite album " + favAlbum.getName() + ", by: " + favAlbum.getArtist() + ", average score: " + highest);
+        System.out.println("Favorite album " + favAlbum.getName() + ", by: " + favAlbum.getArtist(0) + ", average score: " + highest);
     }
 
 

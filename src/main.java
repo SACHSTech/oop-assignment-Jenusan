@@ -59,6 +59,7 @@ public class main {
             quit = true;
         }
     }
+    
     public static void songInputs()throws IOException{
         if (start == 1){
             while (ask){
@@ -103,7 +104,7 @@ public class main {
                 System.out.print("enter song name: ");
                 String name = input.readLine();
                 if (name.equals("0")){
-                    now = new album(album, artist, songList);
+                    now = new album(album, songList);
                     albumStats.addAlbum(now);
                     //songList.removeAll(songList);
                     break;
@@ -121,17 +122,27 @@ public class main {
 
     public static void stats()throws IOException{
         if (start == 3){
-            songRanks.ranketh();
-            songRanks.fav();
-            backToNAV();
+            if (songRanks.getLength() == 0){
+                System.out.println("");
+                System.out.println("No songs to rank genius");
+            }else{
+                songRanks.ranketh();
+                songRanks.fav();
+                backToNAV();
+            }
         }
     }
 
     public static void albumStats()throws IOException{
         if (start ==4){
-            albumStats.albumInfo();
-            albumStats.favAlbum();
-            backToNAV();
+            if (albumStats.getLength() == 0){
+                System.out.println("");
+                System.out.println("No album to rank genius");
+            }else{
+                albumStats.albumInfo();
+                albumStats.favAlbum();
+                backToNAV();
+            }
         }
     }
 }

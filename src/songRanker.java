@@ -17,6 +17,10 @@ public class songRanker{
         songRank = new ArrayList<song>();
     }
 
+    public int getLength(){
+        return songRank.size();
+    }
+
     public void addeth(song song){
         songRank.add(song);
     }
