@@ -130,6 +130,8 @@ public class main {
     public static void albumStats()throws IOException{
         if (start ==4){
             albumStats.albumInfo();
+            albumStats.favAlbum();
+            backToNAV();
         }
     }
 }

@@ -6,6 +6,9 @@ public class albumRanker {
 
     public static double sum = 0;
     public static double average = 0;
+    public static double highest = 0;
+
+    public static album favAlbum;
     
     public albumRanker(){
         albumRank = new ArrayList<album>();
@@ -26,6 +29,12 @@ public class albumRanker {
                 sum = sum + songNow.getSongRating();
             }
 
+
+            if (sum / now.getSize() > highest){
+                highest = sum / now.getSize();
+                favAlbum = now;
+            }
+
             System.out.println(", Average Rating: " + (sum / now.getSize()));
             sum = 0;
 
@@ -40,4 +49,12 @@ public class albumRanker {
             }
         }
 }
+
+    public void favAlbum(){
+        System.out.println("");
+        System.out.println("Favorite album " + favAlbum.getName() + ", by: " + favAlbum.getArtist() + ", average score: " + highest);
+    }
+
+
+
 }
