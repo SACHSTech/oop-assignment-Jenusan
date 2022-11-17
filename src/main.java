@@ -32,7 +32,7 @@ public class main {
 
         //prints welcome screen
         System.out.println("");
-        System.out.println("WELCOME TO FREEKANYE.COM");
+        System.out.println("WELCOME TO SPOTIFYE");
         System.out.println("Use this fire user interface to navigate through rating your favorite albums and songs");
         System.out.println("If you want to see your stats after inputting them, press the stats sections");
         System.out.println("");

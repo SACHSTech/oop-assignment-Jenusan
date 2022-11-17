@@ -1,1 +1,3 @@
-All .java source code files go here.
+# SPOTIFYE (dont sue me)
+
+<img src= C:\Users\Jenus\github-classroom\SACHSTech\oop-assignment-Jenusan\art.png>
