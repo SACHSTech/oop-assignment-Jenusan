@@ -212,6 +212,7 @@ public class main {
                     albumRateString = input.readLine();
                     }
                 }
+
                     rate = Double.valueOf(albumRateString);
 
                     
@@ -222,6 +223,20 @@ public class main {
                         System.out.println("");
                         System.out.print("enter rating from 1-10: ");
                         albumRateString = input.readLine();
+
+                        if (albumRateString.equals("")){
+                            while(albumRateString.equals("")){
+                            System.out.println("");
+                            System.out.println("Enter Valid rating from 0-10");
+                            System.out.println("");
+                            System.out.print("enter rating from 0-10: ");
+                            albumRateString = input.readLine();
+                            }
+                        }
+
+                        rate = Double.valueOf(albumRateString);
+
+                        
                         }
                     }
 
