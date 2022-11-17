@@ -20,6 +20,7 @@ public class main {
 
     static int start;
     public static int songCounter;
+    static int filler = 0;
 
     static double rate = -1;
 
@@ -140,7 +141,7 @@ public class main {
                 }
                         
 
-            
+                rateString = "";
     }
 }
     }
@@ -153,28 +154,78 @@ public class main {
                 System.out.println("input (0) to quit");
                 System.out.print("enter album name: ");
                 String album = input.readLine();
+                while (album.equals("")){
+                    System.out.println("");
+                    System.out.println("Not a valid album name and you know it");
+                    System.out.println("");
+                    System.out.print("enter album name: ");
+                    album = input.readLine();
+                }
                 if (album.equals("0")){
                     break;
                 }
+
                 System.out.print("enter artist name: ");
                 String artist = input.readLine();
+                while (artist.equals("")){
+                    System.out.println("");
+                    System.out.println("Not a valid artist name and you know it");
+                    System.out.println("");
+                    System.out.print("enter artist name: ");
+                    artist = input.readLine();
+                }
 
                 while (albumFiller){
                 System.out.println("");
-                System.out.println("input (0) to quit");
+                System.out.println("input (0) to add new album");
                 System.out.print("enter song name: ");
                 String name = input.readLine();
-                if (name.equals("0")){
-                    now = new album(album, songList);
-                    albumStats.addAlbum(now);
-                    //songList.removeAll(songList);
-                    break;
+                while (name.equals("")){
+                    System.out.println("");
+                    System.out.println("Enter valid song name");
+                    System.out.println("");
+                    System.out.println("input (0) to add new album");
+                    System.out.print("enter song name: ");
+                    name = input.readLine();
                 }
-                System.out.print("enter rating: ");
-                double rate = Double.parseDouble(key.readLine());
+                if (name.equals("0")){
+                    if (filler == 0){
+                        System.out.println("No inputs... deleting album");
+                        break;
+                    }else{
+                        now = new album(album, songList);
+                        albumStats.addAlbum(now);
+                        break;
+                    }
+                }
+
+                System.out.print("enter rating from 0-10: ");
+                String albumRateString = input.readLine();
+
+                if (albumRateString.equals("")){
+                    while(albumRateString.equals("")){
+                    System.out.println("");
+                    System.out.println("Enter Valid rating from 0-10");
+                    System.out.println("");
+                    System.out.print("enter rating from 0-10: ");
+                    albumRateString = input.readLine();
+                    }
+                }
+                    rate = Double.valueOf(albumRateString);
+                    if (rate < 0 || rate > 10){
+                        while(rate < 0 || rate > 10){
+                        System.out.println("");
+                        System.out.println("From 0-10...");
+                        System.out.println("");
+                        System.out.print("enter rating from 1-10: ");
+                        rate = Double.parseDouble(key.readLine());
+                        }
+                    }
 
                 song songs = new song(name, rate, artist);
                 songList.add(songs);
+                filler++;
+
                 }
                 
             }
