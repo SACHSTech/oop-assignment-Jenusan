@@ -23,6 +23,8 @@ public class main {
 
     static double rate = -1;
 
+    static String rateString = "";
+
 
     public static void main(String[] args) throws IOException{
         songRanks = new songRanker();
@@ -105,8 +107,19 @@ public class main {
                     }
                 }
 
+                while(rateString.equals("")){
                 System.out.print("enter rating from 0-10: ");
-                    rate = Double.parseDouble(key.readLine());
+                rateString = input.readLine();
+                if (rateString.equals("")){
+                    while(rateString.equals("")){
+                    System.out.println("");
+                    System.out.println("Enter Valid number from 0-10");
+                    System.out.println("");
+                    System.out.print("enter rating from 0-10: ");
+                    rateString = input.readLine();
+                    }
+                }
+                    rate = Double.valueOf(rateString);
                     if (rate < 0 || rate > 10){
                         while(rate < 0 || rate > 10){
                         System.out.println("");
@@ -124,6 +137,7 @@ public class main {
                         System.out.println("From 1-10...");
                         System.out.println("");
                     }
+                }
                         
 
             
