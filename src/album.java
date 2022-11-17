@@ -1,29 +1,34 @@
 import java.util.ArrayList;
 
-public class album extends rating{
-    public String name;
-    public ArrayList<song> theSongList;
+public class Album extends Rating{
 
-    public song songNow;
+    // initializing variables
+    private String name;
+    private ArrayList<Song> theSongList;
 
-    public album(String name, ArrayList<song> songList){
+    // album constructor
+    public Album(String name, ArrayList<Song> songList){
         super(rating);
         this.name = name;
         theSongList = songList;
     }
 
+    //returns name of album
     public String getName(){
         return this.name;
     }
 
-    public song getTheSong(int i){
+    // returns song object
+    public Song getTheSong(int i){
         return (theSongList).get(i);
     }
 
+    // returns artist
     public String getArtist(int i){
         return (theSongList.get(i)).getArtist();
     }
 
+    // returns number of songs per album
     public int getSize(){
         return (theSongList).size();
     }

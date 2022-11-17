@@ -3,33 +3,34 @@ import java.io.*;
 
 public class main {
 
+    // initializing arraylists and buffer readers
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
     static BufferedReader key = new BufferedReader(new InputStreamReader(System.in));
-    static ArrayList<song> rank = new ArrayList<song>();
-    static ArrayList<song> fav = new ArrayList<song>();
-    public static ArrayList<ArrayList<song>> List = new ArrayList<ArrayList<song>>();
+    static ArrayList<Song> rank = new ArrayList<Song>();
+    static ArrayList<Song> fav = new ArrayList<Song>();
+    static ArrayList<ArrayList<Song>> List = new ArrayList<ArrayList<Song>>();
     static ArrayList<Double> sums = new ArrayList<Double>();
 
-    public static album now;
-    public static songRanker songRanks;
-    public static albumRanker albumStats;
+    // initiallizing global variables
+    static Album now;
+    static SongRanker songRanks;
+    static AlbumRanker albumStats;
 
-    static boolean ask = true;
     static boolean quit = false;
-    static boolean albumFiller = true;
-
     static boolean why = true;
 
     static int start;
-    public static int songCounter;
+    static int songCounter;
     static int filler = 0;
 
     static double rate = -1;
 
-
     public static void main(String[] args) throws IOException{
-        songRanks = new songRanker();
-        albumStats = new albumRanker();
+        // constructs rankers
+        songRanks = new SongRanker();
+        albumStats = new AlbumRanker();
+
+        //prints welcome screen
         System.out.println("");
         System.out.println("WELCOME TO FREEKANYE.COM");
         System.out.println("Use this fire user interface to navigate through rating your favorite albums and songs");
@@ -37,14 +38,15 @@ public class main {
         System.out.println("");
         while (quit == false){
             NAV();
-            songInputs();
-            albumInputs();
-            albumStats();
-            stats();
+            SongInputs();
+            AlbumInputs();
+            AlbumStats();
+            Stats();
         }
     }
 
-    public static void backToNAV() throws IOException{
+    // sends users back to nav
+    public static void BackToNAV() throws IOException{
         System.out.println("");
         System.out.println("press ENTER key to return to NAV");
         String next = input.readLine();
@@ -56,6 +58,7 @@ public class main {
         }
     }
 
+    // navigation interface
     public static void NAV()throws IOException{
         System.out.println("");
         System.out.println("Press 0 to quit");
@@ -64,6 +67,8 @@ public class main {
         System.out.println("Rate Albums   |(2) ");
         System.out.println("Song stats    |(3) ");
         System.out.println("Album stats   |(4) ");
+
+        // try and catch is lowkey pretty cool 
         try {
         start = Integer.parseInt(key.readLine());
         if (start == 0){
@@ -81,9 +86,11 @@ public class main {
         }
     }
 
-    public static void songInputs()throws IOException{
+    // gathers inputs for songs
+    public static void SongInputs()throws IOException{
         if (start == 1){
-            while (ask){
+            while (true){
+                // initial prompts
                 System.out.println("");
                 System.out.println("input (0) to quit");
                 System.out.print("enter song name: ");
@@ -129,7 +136,9 @@ public class main {
             }
             why = true;
 
-            song s = new song(song, rate, artist);
+            // putting all gathered values into a song constructor
+            Song s = new Song(song, rate, artist);
+            // adding songs to arraylists
             rank.add(s);
             fav.add(s);
             songRanks.addeth(s);
@@ -138,10 +147,14 @@ public class main {
 }
     }
 
-    public static void albumInputs()throws IOException{
+    // gathers inputs for albums 
+    public static void AlbumInputs()throws IOException{
         if (start == 2){
-            while (ask){
-                ArrayList<song> songList = new ArrayList<song>();
+            while (true){
+                // new arraylist each runthrough
+                ArrayList<Song> songList = new ArrayList<Song>();
+
+                // prompts
                 System.out.println("");
                 System.out.println("input (0) to quit");
                 System.out.print("enter album name: ");
@@ -168,7 +181,7 @@ public class main {
                     artist = input.readLine();
                 }
 
-                while (albumFiller){
+                while (true){
                 System.out.println("");
                 System.out.println("input (0) when finished with album");
                 System.out.print("enter song name: ");
@@ -186,7 +199,8 @@ public class main {
                         System.out.println("No inputs... deleting album");
                         break;
                     }else{
-                        now = new album(album, songList);
+                        // puts all gathered info into album object
+                        now = new Album(album, songList);
                         albumStats.addAlbum(now);
                         break;
                     }
@@ -208,7 +222,8 @@ public class main {
                 }
                 why = true;
 
-                song songs = new song(name, rate, artist);
+                // puts each song and rating into a new song
+                Song songs = new Song(name, rate, artist);
                 songList.add(songs);
                 filler++;
 
@@ -218,7 +233,8 @@ public class main {
             }
     }
 
-    public static void stats()throws IOException{
+    // shows song stats
+    public static void Stats()throws IOException{
         if (start == 3){
             if (songRanks.getLength() == 0){
                 System.out.println("");
@@ -226,12 +242,13 @@ public class main {
             }else{
                 songRanks.ranketh();
                 songRanks.fav();
-                backToNAV();
+                BackToNAV();
             }
         }
     }
 
-    public static void albumStats()throws IOException{
+    // shows albunm stats
+    public static void AlbumStats()throws IOException{
         if (start ==4){
             if (albumStats.getLength() == 0){
                 System.out.println("");
@@ -239,7 +256,7 @@ public class main {
             }else{
                 albumStats.albumInfo();
                 albumStats.favAlbum();
-                backToNAV();
+                BackToNAV();
             }
         }
     }

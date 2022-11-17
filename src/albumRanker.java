@@ -1,35 +1,40 @@
 import java.util.ArrayList;
 
-public class albumRanker {
+public class AlbumRanker{
 
-    public static ArrayList<album> albumRank;
+    // intilizing variables
+    private static ArrayList<Album> albumRank;
 
-    public static double sum = 0;
-    public static double average = 0;
-    public static double highest = 0;
+    private static double sum = 0;
+    private static double average = 0;
+    private static double highest = 0;
 
-    public static album favAlbum;
+    private static Album favAlbum;
     
-    public albumRanker(){
-        albumRank = new ArrayList<album>();
+    // constructor
+    public AlbumRanker(){
+        albumRank = new ArrayList<Album>();
     }
 
-    public void addAlbum(album album){
+    // adds album to global arraylist
+    public void addAlbum(Album album){
         albumRank.add(album);
     }
 
+    // gets numbers of albums
     public int getLength(){
         return albumRank.size();
     }
 
+    // ranks and returns albums
     public void albumInfo(){
         for (int i = 0; i < albumRank.size(); i++){
-            album now = albumRank.get(i);
+            Album now = albumRank.get(i);
             System.out.println("");
             System.out.print(now.getName() + " by: " + now.getArtist(i));
 
             for (int w = 0; w < now.getSize(); w++){
-                song songNow = now.getTheSong(w);
+                Song songNow = now.getTheSong(w);
                 sum = sum + songNow.getSongRating();
             }
 
@@ -45,7 +50,7 @@ public class albumRanker {
             
             for (int y = 100; y >= 0; y--){
                 for (int x = 0; x < now.getSize(); x++){
-                    song songNow = now.getTheSong(x);
+                    Song songNow = now.getTheSong(x);
                     if (songNow.getSongRating()*10 == y){
                         System.out.println(songNow.getName() + " " + songNow.getSongRating());
                     }
@@ -54,6 +59,7 @@ public class albumRanker {
         }
 }
 
+    // retursn fav album and its average score
     public void favAlbum(){
         System.out.println("");
         System.out.println("Favorite album " + favAlbum.getName() + ", by: " + favAlbum.getArtist(0) + ", average score: " + highest);
