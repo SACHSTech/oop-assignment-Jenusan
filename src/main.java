@@ -18,18 +18,23 @@ public class main {
     static boolean quit = false;
     static boolean albumFiller = true;
 
+    static boolean why = true;
+
     static int start;
     public static int songCounter;
     static int filler = 0;
 
     static double rate = -1;
 
-    static String rateString = "";
-
 
     public static void main(String[] args) throws IOException{
         songRanks = new songRanker();
         albumStats = new albumRanker();
+        System.out.println("");
+        System.out.println("WELCOME TO FREEKANYE.COM");
+        System.out.println("Use this fire user interface to navigate through rating your favorite albums and songs");
+        System.out.println("If you want to see your stats after inputting them, press the stats sections");
+        System.out.println("");
         while (quit == false){
             NAV();
             songInputs();
@@ -41,7 +46,7 @@ public class main {
 
     public static void backToNAV() throws IOException{
         System.out.println("");
-        System.out.println("press any key to return to NAV");
+        System.out.println("press ENTER key to return to NAV");
         String next = input.readLine();
 
         if (next == ""){
@@ -108,40 +113,27 @@ public class main {
                     }
                 }
 
-                while(rateString.equals("")){
+                while (why == true){
+                try{
                 System.out.print("enter rating from 0-10: ");
-                rateString = input.readLine();
-                if (rateString.equals("")){
-                    while(rateString.equals("")){
-                    System.out.println("");
-                    System.out.println("Enter Valid number from 0-10");
-                    System.out.println("");
-                    System.out.print("enter rating from 0-10: ");
-                    rateString = input.readLine();
-                    }
+                rate = Double.parseDouble(key.readLine());
+                if (rate <= 10 && rate >= 0){
+                    why = false;
+                }else{
+                    System.out.println("Value must be from 0-10: ");
                 }
-                    rate = Double.valueOf(rateString);
-                    if (rate < 0 || rate > 10){
-                        while(rate < 0 || rate > 10){
-                        System.out.println("");
-                        System.out.println("From 1-10...");
-                        System.out.println("");
-                        System.out.print("enter rating from 1-10: ");
-                        rate = Double.parseDouble(key.readLine());
-                        }
-
-                        song s = new song(song, rate, artist);
-                        rank.add(s);
-                        fav.add(s);
-                        songRanks.addeth(s);
-                        System.out.println("");
-                        System.out.println("From 1-10...");
-                        System.out.println("");
-                    }
+                }catch(Exception E){
+                    System.out.println("");
+                    System.out.println("Value must be from 0-10: ");
                 }
-                        
+            }
+            why = true;
 
-                rateString = "";
+            song s = new song(song, rate, artist);
+            rank.add(s);
+            fav.add(s);
+            songRanks.addeth(s);
+                
     }
 }
     }
@@ -178,14 +170,14 @@ public class main {
 
                 while (albumFiller){
                 System.out.println("");
-                System.out.println("input (0) to add new album");
+                System.out.println("input (0) when finished with album");
                 System.out.print("enter song name: ");
                 String name = input.readLine();
                 while (name.equals("")){
                     System.out.println("");
                     System.out.println("Enter valid song name");
                     System.out.println("");
-                    System.out.println("input (0) to add new album");
+                    System.out.println("input (0) when finished with album");
                     System.out.print("enter song name: ");
                     name = input.readLine();
                 }
@@ -200,45 +192,21 @@ public class main {
                     }
                 }
 
-                System.out.print("enter rating from 0-10: ");
-                String albumRateString = input.readLine();
-
-                if (albumRateString.equals("")){
-                    while(albumRateString.equals("")){
-                    System.out.println("");
-                    System.out.println("Enter Valid rating from 0-10");
-                    System.out.println("");
+                while (why == true){
+                    try{
                     System.out.print("enter rating from 0-10: ");
-                    albumRateString = input.readLine();
+                    rate = Double.parseDouble(key.readLine());
+                    if (rate <= 10 && rate >= 0){
+                        why = false;
+                    }else{
+                        System.out.println("Value must be from 0-10: ");
+                    }
+                    }catch(Exception E){
+                        System.out.println("");
+                        System.out.println("Value must be from 0-10: ");
                     }
                 }
-
-                    rate = Double.valueOf(albumRateString);
-
-                    
-                    if (rate < 0 || rate > 10){
-                        while(rate < 0 || rate > 10){
-                        System.out.println("");
-                        System.out.println("From 0-10...");
-                        System.out.println("");
-                        System.out.print("enter rating from 1-10: ");
-                        albumRateString = input.readLine();
-
-                        if (albumRateString.equals("")){
-                            while(albumRateString.equals("")){
-                            System.out.println("");
-                            System.out.println("Enter Valid rating from 0-10");
-                            System.out.println("");
-                            System.out.print("enter rating from 0-10: ");
-                            albumRateString = input.readLine();
-                            }
-                        }
-
-                        rate = Double.valueOf(albumRateString);
-
-                        
-                        }
-                    }
+                why = true;
 
                 song songs = new song(name, rate, artist);
                 songList.add(songs);
