@@ -21,6 +21,8 @@ public class main {
     static int start;
     public static int songCounter;
 
+    static double rate = -1;
+
 
     public static void main(String[] args) throws IOException{
         songRanks = new songRanker();
@@ -102,25 +104,31 @@ public class main {
                     artist = input.readLine();
                     }
                 }
-                System.out.print("enter rating from 1-10: ");
-                double rate = Double.parseDouble(key.readLine());
-                if (rate < 0 || rate > 10){
-                    while(rate < 0 || rate > 10){
-                    System.out.println("");
-                    System.out.println("From 1-10...");
-                    System.out.println("");
-                    System.out.print("enter rating from 1-10: ");
+
+                System.out.print("enter rating from 0-10: ");
                     rate = Double.parseDouble(key.readLine());
+                    if (rate < 0 || rate > 10){
+                        while(rate < 0 || rate > 10){
+                        System.out.println("");
+                        System.out.println("From 1-10...");
+                        System.out.println("");
+                        System.out.print("enter rating from 1-10: ");
+                        rate = Double.parseDouble(key.readLine());
+                        }
+
+                        song s = new song(song, rate, artist);
+                        rank.add(s);
+                        fav.add(s);
+                        songRanks.addeth(s);
+                        System.out.println("");
+                        System.out.println("From 1-10...");
+                        System.out.println("");
                     }
-                }
+                        
 
-            song s = new song(song, rate, artist);
-            rank.add(s);
-            fav.add(s);
-            songRanks.addeth(s);
-
-            }
-            }
+            
+    }
+}
     }
 
     public static void albumInputs()throws IOException{
