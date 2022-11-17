@@ -158,6 +158,7 @@ public class main {
                     System.out.println("");
                     System.out.println("Not a valid album name and you know it");
                     System.out.println("");
+                    System.out.println("input (0) to quit");
                     System.out.print("enter album name: ");
                     album = input.readLine();
                 }
@@ -212,13 +213,15 @@ public class main {
                     }
                 }
                     rate = Double.valueOf(albumRateString);
+
+                    
                     if (rate < 0 || rate > 10){
                         while(rate < 0 || rate > 10){
                         System.out.println("");
                         System.out.println("From 0-10...");
                         System.out.println("");
                         System.out.print("enter rating from 1-10: ");
-                        rate = Double.parseDouble(key.readLine());
+                        albumRateString = input.readLine();
                         }
                     }
 
