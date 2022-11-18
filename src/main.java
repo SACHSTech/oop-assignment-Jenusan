@@ -25,7 +25,7 @@ public class main {
 
     static double rate = -1;
 
-    public static void main(String[] args) throws IOException{
+    private static void main(String[] args) throws IOException{
         // constructs rankers
         songRanks = new SongRanker();
         albumStats = new AlbumRanker();
@@ -46,7 +46,7 @@ public class main {
     }
 
     // sends users back to nav
-    public static void BackToNAV() throws IOException{
+    private static void BackToNAV() throws IOException{
         System.out.println("");
         System.out.println("press ENTER key to return to NAV");
         String next = input.readLine();
@@ -59,7 +59,7 @@ public class main {
     }
 
     // navigation interface
-    public static void NAV()throws IOException{
+    private static void NAV()throws IOException{
         System.out.println("");
         System.out.println("Press 0 to quit");
         System.out.println("Press keys 1-4 to navigate");
@@ -87,7 +87,7 @@ public class main {
     }
 
     // gathers inputs for songs
-    public static void SongInputs()throws IOException{
+    private static void SongInputs()throws IOException{
         if (start == 1){
             while (true){
                 // initial prompts
@@ -148,7 +148,7 @@ public class main {
     }
 
     // gathers inputs for albums 
-    public static void AlbumInputs()throws IOException{
+    private static void AlbumInputs()throws IOException{
         if (start == 2){
             while (true){
                 // new arraylist each runthrough
@@ -234,7 +234,7 @@ public class main {
     }
 
     // shows song stats
-    public static void Stats()throws IOException{
+    private static void Stats()throws IOException{
         if (start == 3){
             if (songRanks.getLength() == 0){
                 System.out.println("");
@@ -248,7 +248,7 @@ public class main {
     }
 
     // shows albunm stats
-    public static void AlbumStats()throws IOException{
+    private static void AlbumStats()throws IOException{
         if (start ==4){
             if (albumStats.getLength() == 0){
                 System.out.println("");
