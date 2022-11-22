@@ -1,6 +1,6 @@
 # SPOTIFYE (dont sue me)
 
-![alt text](C:\Users\Jenus\github-classroom\SACHSTech\oop-assignment-Jenusan\src\art.png)
+![alt text](src\art.png)
 
 ## summary
 

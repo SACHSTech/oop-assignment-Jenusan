@@ -25,7 +25,7 @@ public class main {
 
     static double rate = -1;
 
-    private static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException{
         // constructs rankers
         songRanks = new SongRanker();
         albumStats = new AlbumRanker();
