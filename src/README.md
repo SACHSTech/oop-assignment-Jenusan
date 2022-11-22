@@ -1,6 +1,6 @@
 # SPOTIFYE (dont sue me)
 
-![alt text](src\art.png)
+![alt text](https://i.ibb.co/Rh9F27n/2022-11-21-2.png)
 
 ## summary
 
