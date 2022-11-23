@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.io.*;
 
-public class main {
+public class Main {
 
     // initializing arraylists and buffer readers
     static BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
