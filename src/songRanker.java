@@ -13,22 +13,32 @@ public class SongRanker{
     private double highest;
     private double average;
 
-    // constructor
+    /**
+     * constructor to initialize
+     */
     public SongRanker(){
         songRank = new ArrayList<Song>();
     }
 
-    // returns length of list 
+    /**
+     * 
+     * @return gets length of arraylist
+     */
     public int getLength(){
         return songRank.size();
     }
 
-    // adds songs to global arraylist
+    /**
+     * 
+     * @param song inputs song to arraylist
+     */
     public void addeth(Song song){
         songRank.add(song);
     }
 
-    // returns songs ranked
+    /**
+     * ranks songs
+     */
     public void ranketh(){
             System.out.println("");
             System.out.println("Songs ranked from highest to lowest ");
@@ -43,7 +53,9 @@ public class SongRanker{
             }
     }
 
-    // returns favorite artist
+    /**
+     * ranks favorite artist
+     */
     public void fav(){
         System.out.println("");
             for (int i = 0; i < songRank.size(); i++){

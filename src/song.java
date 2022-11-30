@@ -6,7 +6,12 @@ public class Song extends Rating {
     private String name;
     private String artist;
 
-    // song constructor
+    /**
+     * 
+     * @param name input name of song
+     * @param rating input rating
+     * @param artist input artists
+     */
     public Song(String name, double rating, String artist){
         super(rating);
         this.rating = rating;
@@ -14,17 +19,24 @@ public class Song extends Rating {
         this.name = name;
     }
 
-    // returns rating
+    /**
+     * @return gets rating
+     */
     public double getSongRating(){
         return this.rating;
     }
 
-    // returns song name
+    /**
+     * gets name
+     */
     public String getName(){
         return this.name;
     }
 
-    // returns artist name
+    /**
+     * gets artist
+     * @return
+     */
     public String getArtist(){
         return this.artist;
     }

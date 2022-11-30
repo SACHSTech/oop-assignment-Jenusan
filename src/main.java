@@ -17,7 +17,7 @@ public class Main {
     static AlbumRanker albumStats;
 
     static boolean quit = false;
-    static boolean why = true;
+    static boolean UIpreventing = true;
 
     static int start;
     static int songCounter;
@@ -25,6 +25,9 @@ public class Main {
 
     static double rate = -1;
 
+    /**
+     * kinda just the main method... idk 
+     */
     public static void main(String[] args) throws IOException{
         // constructs rankers
         songRanks = new SongRanker();
@@ -45,7 +48,9 @@ public class Main {
         }
     }
 
-    // sends users back to nav
+    /**
+     * sends users back to nav
+     */
     private static void BackToNAV() throws IOException{
         System.out.println("");
         System.out.println("press ENTER key to return to NAV");
@@ -58,7 +63,10 @@ public class Main {
         }
     }
 
-    // navigation interface
+    /**
+     * 
+     * navigation screen
+     */
     private static void NAV()throws IOException{
         System.out.println("");
         System.out.println("Press 0 to quit");
@@ -86,7 +94,9 @@ public class Main {
         }
     }
 
-    // gathers inputs for songs
+    /**
+     * inputter for songs
+     */
     private static void SongInputs()throws IOException{
         if (start == 1){
             while (true){
@@ -104,6 +114,7 @@ public class Main {
                     song = input.readLine();
                     }
                 }
+                // break code
                 if (song.equals("0")){
                     start = 0;
                     break;
@@ -119,13 +130,13 @@ public class Main {
                     artist = input.readLine();
                     }
                 }
-
-                while (why == true){
+                //fool proofing
+                while (UIpreventing == true){
                 try{
                 System.out.print("enter rating from 0-10: ");
                 rate = Double.parseDouble(key.readLine());
                 if (rate <= 10 && rate >= 0){
-                    why = false;
+                    UIpreventing = false;
                 }else{
                     System.out.println("Value must be from 0-10: ");
                 }
@@ -134,7 +145,7 @@ public class Main {
                     System.out.println("Value must be from 0-10: ");
                 }
             }
-            why = true;
+            UIpreventing = true;
 
             // putting all gathered values into a song constructor
             Song s = new Song(song, rate, artist);
@@ -147,14 +158,16 @@ public class Main {
 }
     }
 
-    // gathers inputs for albums 
+    /**
+     * album inputter
+     */
     private static void AlbumInputs()throws IOException{
         if (start == 2){
             while (true){
                 // new arraylist each runthrough
                 ArrayList<Song> songList = new ArrayList<Song>();
 
-                // prompts
+                // inputting albums
                 System.out.println("");
                 System.out.println("input (0) to quit");
                 System.out.print("enter album name: ");
@@ -206,12 +219,12 @@ public class Main {
                     }
                 }
 
-                while (why == true){
+                while (UIpreventing == true){
                     try{
                     System.out.print("enter rating from 0-10: ");
                     rate = Double.parseDouble(key.readLine());
                     if (rate <= 10 && rate >= 0){
-                        why = false;
+                        UIpreventing = false;
                     }else{
                         System.out.println("Value must be from 0-10: ");
                     }
@@ -220,7 +233,7 @@ public class Main {
                         System.out.println("Value must be from 0-10: ");
                     }
                 }
-                why = true;
+                UIpreventing = true;
 
                 // puts each song and rating into a new song
                 Song songs = new Song(name, rate, artist);
@@ -233,7 +246,9 @@ public class Main {
             }
     }
 
-    // shows song stats
+    /**
+     * displays stats for songs
+     */
     private static void Stats()throws IOException{
         if (start == 3){
             if (songRanks.getLength() == 0){
@@ -247,7 +262,9 @@ public class Main {
         }
     }
 
-    // shows albunm stats
+    /**
+     * prits albums ranked
+     */
     private static void AlbumStats()throws IOException{
         if (start ==4){
             if (albumStats.getLength() == 0){

@@ -11,22 +11,32 @@ public class AlbumRanker{
 
     private static Album favAlbum;
     
-    // constructor
+    /**
+     * constructor to initialize list
+     */
     public AlbumRanker(){
         albumRank = new ArrayList<Album>();
     }
 
-    // adds album to global arraylist
+    /**
+     * 
+     * @param album inputs allbum to an arraylist
+     */
     public void addAlbum(Album album){
         albumRank.add(album);
     }
 
-    // gets numbers of albums
+    /**
+     * 
+     * @return gets length of albumlist
+     */
     public int getLength(){
         return albumRank.size();
     }
 
-    // ranks and returns albums
+    /**
+     * ranks and prints album ranks
+     */
     public void albumInfo(){
         for (int i = 0; i < albumRank.size(); i++){
             Album now = albumRank.get(i);
@@ -59,7 +69,9 @@ public class AlbumRanker{
         }
 }
 
-    // retursn fav album and its average score
+    /**
+     * retursn fav album and its average score
+     *  */ 
     public void favAlbum(){
         System.out.println("");
         System.out.println("Favorite album " + favAlbum.getName() + ", by: " + favAlbum.getArtist(0) + ", average score: " + highest);

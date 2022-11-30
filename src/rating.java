@@ -3,12 +3,18 @@ public abstract class Rating {
     // intialized variabeles (i have no idea what protected means)
     protected static double rating;
 
-    // contructor
+    /**
+     * 
+     * @param rating input rating
+     */
     public Rating(double rating){
         this.rating = rating;
     }
 
-    // gets rating
+    /**
+     * 
+     * @return rating 
+     */
     public double getRating(){
         return this.rating;
     }

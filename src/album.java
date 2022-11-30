@@ -6,29 +6,46 @@ public class Album extends Rating{
     private String name;
     private ArrayList<Song> theSongList;
 
-    // album constructor
+    /**
+     * 
+     * @param name input for the name of the album
+     * @param songList input for the arraylist of songs
+     */
     public Album(String name, ArrayList<Song> songList){
         super(rating);
         this.name = name;
         theSongList = songList;
     }
 
-    //returns name of album
+    /**
+     * method to get name
+     */
     public String getName(){
         return this.name;
     }
 
-    // returns song object
+    /**
+     * 
+     * @param i get index of which song to get
+     * @return song
+     */
     public Song getTheSong(int i){
         return (theSongList).get(i);
     }
 
-    // returns artist
+    /**
+     * 
+     * @param i index 
+     * @return sting
+     */
     public String getArtist(int i){
         return (theSongList.get(i)).getArtist();
     }
 
-    // returns number of songs per album
+    /**
+     * 
+     * @return size of songlist
+     */
     public int getSize(){
         return (theSongList).size();
     }
